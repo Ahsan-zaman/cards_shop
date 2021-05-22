@@ -4,10 +4,7 @@
 @include('layouts.head')
 
 <body>
-
     @include('layouts.header')
-
-
 
     <!-- ========================= SECTION INTRO ========================= -->
     <section class="section-intro padding-y-sm">
@@ -25,27 +22,39 @@
                     <img style="object-fit: cover;height:80vh;" src="assets/images/1.jpg" class="d-block w-100"
                         alt="assets/images/1.jpg">
                     <div class="carousel-caption h-75 text-md-start d-md-block">
-                        <h1>PUBG Mobile Cards!</h1>
-                        <p>When purchasing from our website, you get instant codes. Signup for free to get started.</p>
-                        <button type="button" class="btn btn-primary">Shop Now</button>
+                        <span class="h1 text-light bg-dark bg-gradient rounded text-center text-md-left px-3"><strong>PUBG
+                                Mobile
+                                Cards!</strong>
+                        </span>
+                        <p class="mt-3">When purchasing from our website, you get instant codes. Signup for free to get
+                            started.</p>
+                        <a href="{{ route('shop.index') }}" class="btn btn-warning">Shop Now</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img height="400" style="object-fit: cover;height:80vh;" src="assets/images/2.jpg"
                         class="d-block w-100" alt="assets/images/2.jpg">
                     <div class="carousel-caption h-75 text-md-start d-md-block">
-                        <h1>PUBG Mobile Cards!</h1>
-                        <p>When purchasing from our website, you get instant codes. Signup for free to get started.</p>
-                        <button type="button" class="btn btn-primary">Shop Now</button>
+                        <span class="h1 text-light bg-dark bg-gradient rounded text-center text-md-left px-3"><strong>PUBG
+                                Mobile
+                                Cards!</strong>
+                        </span>
+                        <p class="mt-3">When purchasing from our website, you get instant codes. Signup for free to get
+                            started.</p>
+                        <a href="{{ route('shop.index') }}" class="btn btn-warning">Shop Now</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img height="400" style="object-fit: cover;height:80vh;" src="assets/images/3.jpg"
                         class="d-block w-100" alt="assets/images/3.jpg">
                     <div class="carousel-caption h-75 text-md-start d-md-block">
-                        <h1>PUBG Mobile Cards!</h1>
-                        <p>When purchasing from our website, you get instant codes. Signup for free to get started.</p>
-                        <button type="button" class="btn btn-primary">Shop Now</button>
+                        <span class="h1 text-light bg-dark bg-gradient rounded text-center text-md-left px-3"><strong>PUBG
+                                Mobile
+                                Cards!</strong>
+                        </span>
+                        <p class="mt-3">When purchasing from our website, you get instant codes. Signup for free to get
+                            started.</p>
+                        <a href="{{ route('shop.index') }}" class="btn btn-warning">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -129,7 +138,6 @@
     </section>
     <!-- ========================= SECTION FEATURE END// ========================= -->
 
-
     <!-- ========================= SECTION CONTENT ========================= -->
     <section class="section-content">
         <div class="container">
@@ -137,123 +145,13 @@
             <header class="section-heading">
                 <h3 class="section-title">Popular cards</h3>
             </header><!-- sect-heading -->
-
-
             <div class="row">
+                @foreach($pop as $card)
                 <div class="col-md-3">
                     <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/1.webp"> </a>
+                        <a href="#" class="img-wrap mt-3"> <img src="/storage/{{$card->category->img}}"> </a>
                         <figcaption class="info-wrap">
-                            <a href="#" class="title">Sony 10$ PlayStation Store Card</a>
-
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 34 reviws</span>
-                            </div>
-                            <div class="price mt-1">﷼38.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/2.webp"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">iTunes Card</a>
-
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 34 reviws</span>
-                            </div>
-                            <div class="price mt-1">$100.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/3.webp"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">Google Store Card</a>
-
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 34 reviws</span>
-                            </div>
-                            <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/4.png"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">PUBG Mobile 60UC</a>
-
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 34 reviws</span>
-                            </div>
-                            <div class="price mt-1">$10.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-            </div> <!-- row.// -->
-
-        </div> <!-- container .//  -->
-    </section>
-    <!-- ========================= SECTION CONTENT END// ========================= -->
-
-
-
-    <!-- ========================= SECTION CONTENT ========================= -->
-    <section class="section-content">
-        <div class="container">
-
-            <header class="section-heading">
-                <h3 class="section-title">Top Selling</h3>
-            </header><!-- sect-heading -->
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/4.png"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">PUBG Mobile (300+25)UC</a>
+                            <a href="#" class="title">{{$card->name}}</a>
 
                             <div class="rating-wrap">
                                 <ul class="rating-stars">
@@ -268,15 +166,30 @@
                                 </ul>
                                 <span class="label-rating text-muted"> 99+ reviws</span>
                             </div>
-                            <div class="price mt-1">$20.00</div> <!-- price-wrap.// -->
+                            <div class="price mt-1">{{$card->price}} SAR</div> <!-- price-wrap.// -->
                         </figcaption>
                     </div>
                 </div> <!-- col.// -->
+                @endforeach
+            </div> <!-- row.// -->
+
+        </div> <!-- container .//  -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-content">
+        <div class="container">
+
+            <header class="section-heading">
+                <h3 class="section-title">Top Selling</h3>
+            </header><!-- sect-heading -->
+            <div class="row">
+                @foreach($cards as $card)
                 <div class="col-md-3">
                     <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/4.png"> </a>
+                        <a href="#" class="img-wrap mt-3"> <img src="/storage/{{$card->category->img}}"> </a>
                         <figcaption class="info-wrap">
-                            <a href="#" class="title">PUBG Mobile (902+166)UC</a>
+                            <a href="#" class="title">{{$card->name}}</a>
 
                             <div class="rating-wrap">
                                 <ul class="rating-stars">
@@ -289,81 +202,13 @@
                                             class="fa fa-star"></i><i class="fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <span class="label-rating text-muted"> 86 reviws</span>
+                                <span class="label-rating text-muted"> 99+ reviws</span>
                             </div>
-                            <div class="price mt-1">$100.00</div> <!-- price-wrap.// -->
+                            <div class="price mt-1">{{$card->price}} SAR</div> <!-- price-wrap.// -->
                         </figcaption>
                     </div>
                 </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/2.webp"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">iTunes Card</a>
-
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 34 reviws</span>
-                            </div>
-                            <div class="price mt-1">$100.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/3.webp"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">Google Store Card</a>
-
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 34 reviws</span>
-                            </div>
-                            <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
-                <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/images/items/1.webp"> </a>
-                        <figcaption class="info-wrap">
-                            <a href="#" class="title">Sony 100$ PlayStation Store Card</a>
-
-                            <div class="rating-wrap">
-                                <ul class="rating-stars">
-                                    <li style="width:80%" class="stars-active">
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <span class="label-rating text-muted"> 34 reviws</span>
-                            </div>
-                            <div class="price mt-1">﷼380.00</div> <!-- price-wrap.// -->
-                        </figcaption>
-                    </div>
-                </div> <!-- col.// -->
+                @endforeach
             </div> <!-- row.// -->
 
         </div> <!-- container .//  -->
@@ -411,77 +256,7 @@
 
 
     <!-- ========================= FOOTER ========================= -->
-    <footer class="section-footer border-top bg">
-        <div class="container">
-            <section class="footer-top  padding-y">
-                <div class="row">
-                    <aside class="col-md col-6">
-                        <h6 class="title">Brands</h6>
-                        <ul class="list-unstyled">
-                            <li> <a href="#">Apple</a></li>
-                            <li> <a href="#">Google</a></li>
-                            <li> <a href="#">PUBG</a></li>
-                            <li> <a href="#">PlayStation</a></li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md col-6">
-                        <h6 class="title">Company</h6>
-                        <ul class="list-unstyled">
-                            <li> <a href="#">About us</a></li>
-                            <li> <a href="#">Career</a></li>
-                            <li> <a href="#">Find a store</a></li>
-                            <li> <a href="#">Rules and terms</a></li>
-                            <li> <a href="#">Sitemap</a></li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md col-6">
-                        <h6 class="title">Help</h6>
-                        <ul class="list-unstyled">
-                            <li> <a href="#">Contact us</a></li>
-                            <li> <a href="#">Money refund</a></li>
-                            <li> <a href="#">Order status</a></li>
-                            <li> <a href="#">Shipping info</a></li>
-                            <li> <a href="#">Open dispute</a></li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md col-6">
-                        <h6 class="title">Account</h6>
-                        <ul class="list-unstyled">
-                            <li> <a href="#"> User Login </a></li>
-                            <li> <a href="#"> User register </a></li>
-                            <li> <a href="#"> Account Setting </a></li>
-                            <li> <a href="#"> My Orders </a></li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md">
-                        <h6 class="title">Social</h6>
-                        <ul class="list-unstyled">
-                            <li><a href="#"> <i class="fab fa-facebook"></i> Facebook </a></li>
-                            <li><a href="#"> <i class="fab fa-twitter"></i> Twitter </a></li>
-                            <li><a href="#"> <i class="fab fa-instagram"></i> Instagram </a></li>
-                            <li><a href="#"> <i class="fab fa-youtube"></i> Youtube </a></li>
-                        </ul>
-                    </aside>
-                </div> <!-- row.// -->
-            </section> <!-- footer-top.// -->
-
-            <section class="footer-bottom row">
-                <div class="col-md-2">
-                    <p class="text-muted"> {{date("Y")}} Cards Shop </p>
-                </div>
-                <div class="col-md-8 text-md-center">
-                    <span class="px-2">info@com</span>
-                    <span class="px-2">+000-000-0000</span>
-                    <span class="px-2">Street name 123, ABC</span>
-                </div>
-                <!-- <div class="col-md-2 text-md-right text-muted">
-                    <i class="fab fa-lg fa-cc-visa"></i>
-                    <i class="fab fa-lg fa-cc-paypal"></i>
-                    <i class="fab fa-lg fa-cc-mastercard"></i>
-                </div> -->
-            </section>
-        </div><!-- //container -->
-    </footer>
+    @include('layouts.footer')
     <!-- ========================= FOOTER END // ========================= -->
 
 </body>

@@ -1,6 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BalanceRechargeRequestController;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CodeController;
 use App\Http\Controllers\LandingPageController;
+use App\Models\BalanceRechargeRequest;
+use App\Models\Card;
+use App\Models\Category;
+use App\Models\Code;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +23,49 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-Route::get('/register', [LandingPageController::class, 'index'])->name('register');
-
-Route::get('/shop', 'ShopController@index')->name('shop.index');
+Route::get('/', [LandingPageController::class, 'index'])->name('home.index');
+Route::view('/login', 'login')->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::view('/register', 'register')->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::view('/shop', 'welcome')->name('shop.index');
 Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 
-Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::middleware('auth')->group(function () {
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::view('profile', 'pages.profile')->name('profile.index');
+    Route::post('profile_update', [ AuthController::class, 'update' ]);
+    Route::view('wallet', 'welcome')->name('wallet.index');
+    Route::post('wallet-recharge', [BalanceRechargeRequestController::class, 'store'])->name('wallet.recharge');
+
+    Route::middleware('is.admin')->prefix('admin')->group(function () {
+        Route::get('dashboard', function () {
+            return view('admin.dashboard')->with(['reqs' => BalanceRechargeRequest::where('status', 'New')->with('user')->get()]);
+        });
+
+        Route::get('categories', function () {
+            return view('admin.categories')->with(['categories' => Category::all()]);
+        });
+        Route::post('categories/new', [CategoryController::class, 'store']);
+
+        Route::get('cards/{category_id}', function ($category_id) {
+            return view('admin.cards')->with(['cards' => Card::where('category_id', $category_id)->get(), 'category' => Category::whereId($category_id)->first()]);
+        });
+        Route::post('cards/new', [CardController::class, 'store']);
+
+        Route::get('codes/{category_id}/{card_id}', function ($category_id, $card_id) {
+            return view('admin.upload')
+                ->with([
+                    'codes' => Code::where('card_id', $card_id)->whereSold(0)->limit(100)->get(),
+                    'card' => Card::whereId($card_id)->withCount('codes')->first(),
+                ]);
+        });
+        Route::get('codes/sample', [CodeController::class, 'sample']);
+        Route::post('codes/new', [CodeController::class, 'store']);
+    });
+});
+
+Route::view('/cart', 'welcome')->name('cart.index');
 Route::post('/cart/{product}', 'CartController@store')->name('cart.store');
 Route::patch('/cart/{product}', 'CartController@update')->name('cart.update');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');

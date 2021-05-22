@@ -1,14 +1,18 @@
+<?php
+
+use App\Models\Category;
+
+?>
 <header class="section-header">
 
     <nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
         <div class="container">
             <ul class="navbar-nav d-none d-md-flex mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('shop.index') }}">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}">Cart</a></li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link"> Call: +0000000000 </a></li>
                 <li class="nav-item"><a href="#" class="nav-link"> Call: +0000000000 </a></li>
                 <!-- <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,8 +31,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-2 col-4">
-                    <a href="#" class="brand-wrap h2 text-decoration-none">
-                        Cards Shop
+                    <a href="{{ route('home.index') }}" class="brand-wrap h2 text-decoration-none">
+                        <strong>Cards Shop</strong>
                     </a> <!-- brand-wrap.// -->
                 </div>
                 <!-- <div class="col-lg-6 col-12 col-sm-12">
@@ -52,12 +56,25 @@
                         </div>
                         <div class="widget-header icontext">
                             <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
-                            <div class="text">
+                            <div class="d-flex flex-column">
+                                @guest
                                 <span class="text-muted">Welcome!</span>
                                 <div>
-                                    <a href="{{ route('login') }}">Sign in</a> |
+                                    <a href="{{ route('login') }}">Login</a> |
                                     <a href="{{ route('register') }}"> Register</a>
                                 </div>
+                                @else
+                                <div class="d-flex">
+                                    <a class="text-decoration-none" href="{{ url('profile') }}"
+                                        class="text-primary"><strong>{{auth()->user()->name }}</strong></a>
+                                    <a class="text-decoration-none ms-auto" href="{{ route('logout') }}"
+                                        class="text-muted">
+                                        Logout
+                                    </a>
+                                </div>
+                                <a class="text-decoration-none" href="{{ url('profile') }}">Balance: {{
+                                    number_format(auth()->user()->wallet,2) }} SAR</a>
+                                @endguest
                             </div>
                         </div>
                     </div> <!-- widgets-wrap.// -->
@@ -93,27 +110,11 @@
                             <a class="dropdown-item" href="#">Mobile Recharge</a>
                         </div>
                     </li>
+                    @foreach(Category::all() as $c)
                     <li class="nav-item">
-                        <a class="nav-link" href="#">PUBG Mobile</a>
+                        <a class="nav-link" href="#">{{$c->name}}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">STC</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">iTunes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Google</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Play Station</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Clothing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Furnitures</a>
-                    </li>
+                    @endforeach
                 </ul>
             </div> <!-- collapse .// -->
         </div> <!-- container .// -->
