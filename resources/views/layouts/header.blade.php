@@ -112,7 +112,7 @@ use App\Models\Category;
                     </li>
                     @foreach(Category::all() as $c)
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{$c->name}}</a>
+                        <a class="nav-link" href="{{ url('shop') }}?category={{$c->id}}">{{$c->name}}</a>
                     </li>
                     @endforeach
                 </ul>

@@ -6,6 +6,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\ShopController;
 use App\Models\BalanceRechargeRequest;
 use App\Models\Card;
 use App\Models\Category;
@@ -28,7 +29,7 @@ Route::view('/login', 'login')->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::view('/register', 'register')->name('register');
 Route::post('/register', [AuthController::class, 'register']);
-Route::view('/shop', 'welcome')->name('shop.index');
+Route::get('/shop', [ ShopController::class, 'index' ])->name('shop.index');
 Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 
 Route::middleware('auth')->group(function () {
@@ -42,6 +43,8 @@ Route::middleware('auth')->group(function () {
         Route::get('dashboard', function () {
             return view('admin.dashboard')->with(['reqs' => BalanceRechargeRequest::where('status', 'New')->with('user')->get()]);
         });
+        Route::get('request-file-download', [ BalanceRechargeRequestController::class, 'dl' ]);
+        Route::get('accept-request', [ BalanceRechargeRequestController::class, 'accept' ]);
 
         Route::get('categories', function () {
             return view('admin.categories')->with(['categories' => Category::all()]);

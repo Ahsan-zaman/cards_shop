@@ -118,11 +118,12 @@
     <div class="container min-vh-100">
         <div class="row">
             <div class="col">
-                <div class="mx-auto py-6 px-4">
-                    <div class="text-green-600 leading-loose bg-green-100 text-center mt-2 rounded">
+                <div class="my-5">
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ $message }}
                     </div>
-                    <div class="text-red-600 leading-loose bg-red-100 text-center mt-2 rounded">
-                    </div>
+                    @endif
                     <!-- This example requires Tailwind CSS v2.0+ -->
                     <h1 class="text-primary">Recharge Requests </h1>
                     <div class="table-responsive">
@@ -145,9 +146,10 @@
                                     <td>{{$req->amount}} SAR</td>
                                     <td>{{$req->type}}</td>
                                     <td>{{$req->comment}}</td>
-                                    <td><a href="#">Uploaded File</a></td>
+                                    <td><a href="/admin/request-file-download?id={{$req->id}}">Uploaded File</a></td>
                                     <td>
-                                        <a href="#" class="btn btn-primary">Approve</a>
+                                        <a href="/admin/accept-request?id={{$req->id}}"
+                                            class="btn btn-primary">Approve</a>
                                         <a href="#" class="btn btn-danger">Reject</a>
                                     </td>
                                 </tr>

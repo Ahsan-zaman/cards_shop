@@ -4,7 +4,7 @@
 
 <body>
     @include('layouts.header')
-    <div class="container mt-5">
+    <div class="container my-5">
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="card p-5 h-100">
@@ -176,6 +176,7 @@
             })()
         </script>
     </div>
+    @include('layouts.footer')
 </body>
 
 </html>

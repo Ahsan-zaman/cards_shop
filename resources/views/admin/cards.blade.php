@@ -119,7 +119,7 @@
                                             <div class="price mt-1">{{number_format($cat->price,2)}} SAR</div>
                                             <div class="d-flex justify-content-end">
                                                 <a href="/admin/codes/{{$category->id}}/{{$cat->id}}"
-                                                    class="btn btn-primary">Upload Code</a>
+                                                    class="btn btn-primary">View Codes</a>
                                             </div>
                                         </figcaption>
                                     </div>
