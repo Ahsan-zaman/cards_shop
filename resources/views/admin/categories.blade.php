@@ -112,7 +112,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="card card-product-grid pt-3">
                                         <a href="/admin/cards/{{$cat->id}}" class="img-wrap"> <img
-                                                src="{{ url('/storage/'.$cat->img) }}">
+                                                src="{{ url($cat->img) }}">
                                         </a>
                                         <figcaption class="info-wrap">
                                             <a href="/admin/cards/{{$cat->id}}"

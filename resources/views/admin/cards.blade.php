@@ -111,7 +111,7 @@
                                 @forelse ($cards as $cat)
                                 <div class="col-12 col-md-6">
                                     <div href="#" class="card card-product-grid pt-3">
-                                        <div class="img-wrap"> <img src="{{ url('/storage/'.$category->img) }}">
+                                        <div class="img-wrap"> <img src="{{ url($category->img) }}">
                                         </div>
                                         <figcaption class="info-wrap">
                                             <span class="link-primary h5 text-center text-decoration-none">

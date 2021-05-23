@@ -149,7 +149,7 @@
                 @foreach($pop as $card)
                 <div class="col-md-3">
                     <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap mt-3"> <img src="/storage/{{$card->category->img}}"> </a>
+                        <a href="#" class="img-wrap mt-3"> <img src="{{$card->category->img}}"> </a>
                         <figcaption class="info-wrap">
                             <a href="#" class="title">{{$card->name}}</a>
 
@@ -187,7 +187,7 @@
                 @foreach($cards as $card)
                 <div class="col-md-3">
                     <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap mt-3"> <img src="/storage/{{$card->category->img}}"> </a>
+                        <a href="#" class="img-wrap mt-3"> <img src="{{$card->category->img}}"> </a>
                         <figcaption class="info-wrap">
                             <a href="#" class="title">{{$card->name}}</a>
 
