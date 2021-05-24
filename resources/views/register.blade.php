@@ -10,7 +10,7 @@
                 <div class="card p-5">
                     <h3 class="text-primary mb-3">Register</h3>
                     <form class="row g-3 needs-validation" action="{{ route('register') }}" method="POST" novalidate>
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="col-12">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"

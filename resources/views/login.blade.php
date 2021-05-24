@@ -21,7 +21,7 @@
                     @endif
 
                     <form class="row g-3 needs-validation" action="{{ route('login') }}" method="POST" novalidate>
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="col-12">
                             <label for="email" class="form-label">Email</label>
                             <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"

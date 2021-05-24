@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\SampleExport;
 use App\Imports\CodesImport;
+use App\Models\Code;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -24,5 +25,10 @@ class CodeController extends Controller
         Excel::import(new CodesImport($request->card_id), request()->file('file'));
 
         return back()->with('success', 'Codes are uploaded successfully!');
+    }
+    public function destroy(Code $code)
+    {
+        $code->delete();
+        return back()->with('success', 'Code has been deleted successfully!');
     }
 }

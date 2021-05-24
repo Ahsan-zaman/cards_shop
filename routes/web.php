@@ -65,6 +65,7 @@ Route::middleware('auth')->group(function () {
         });
         Route::get('codes/sample', [CodeController::class, 'sample']);
         Route::post('codes/new', [CodeController::class, 'store']);
+        Route::delete('codes/{code}', [CodeController::class, 'destroy']);
     });
 });
 

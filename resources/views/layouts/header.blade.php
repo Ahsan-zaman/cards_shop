@@ -8,7 +8,7 @@ use App\Models\Category;
     <nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
         <div class="container">
             <ul class="navbar-nav d-none d-md-flex mr-auto">
-                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('shop.index') }}">Shop</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}">Cart</a></li>
             </ul>
@@ -50,33 +50,42 @@ use App\Models\Category;
                 <div class="ml-auto col-lg-10    col-8">
                     <div class="d-flex justify-content-end">
                         <div class="widget-header">
-                            <a href="#" class="icon icon-sm rounded-circle border"><i
-                                    class="fa fa-shopping-cart"></i></a>
+                            <a href="#" class="icon icon-sm rounded-circle border">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
                             <!-- <span class="badge badge-pill badge-danger notify">0</span> -->
                         </div>
-                        <div class="widget-header icontext">
+                            @guest
                             <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
-                            <div class="d-flex flex-column">
-                                @guest
+                            <div class="d-flex flex-column ms-2">
                                 <span class="text-muted">Welcome!</span>
                                 <div>
                                     <a href="{{ route('login') }}">Login</a> |
                                     <a href="{{ route('register') }}"> Register</a>
                                 </div>
-                                @else
-                                <div class="d-flex">
-                                    <a class="text-decoration-none" href="{{ url('profile') }}"
-                                        class="text-primary"><strong>{{auth()->user()->name }}</strong></a>
-                                    <a class="text-decoration-none ms-auto" href="{{ route('logout') }}"
-                                        class="text-muted">
-                                        Logout
+                            </div>
+                            @else
+                            <div class="dropdown">
+                                <style>.dropdown-toggle::after { border: none; }</style>
+                                <div class="widget-header icontext dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+                                    <a href="#" class="d-flex flex-column align-items-start text-decoration-none">
+                                        <div class="link-primary" href="{{ url('profile') }}">
+                                            <strong>{{auth()->user()->name }}</strong>
+                                        </div>
+                                        <div>
+                                            Balance: {{ number_format(auth()->user()->wallet,2) }} SAR
+                                        </div>
                                     </a>
                                 </div>
-                                <a class="text-decoration-none" href="{{ url('profile') }}">Balance: {{
-                                    number_format(auth()->user()->wallet,2) }} SAR</a>
-                                @endguest
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{{ url('profile') }}">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('profile') }}">My Wallet</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                                </ul>
                             </div>
-                        </div>
+                            @endguest
+
                     </div> <!-- widgets-wrap.// -->
                 </div> <!-- col.// -->
             </div> <!-- row.// -->

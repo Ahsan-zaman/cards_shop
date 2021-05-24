@@ -11,7 +11,7 @@
                     <h3 class="text-primary mb-3">Profile</h3>
                     <form class="row g-3 needs-validation" action="{{ url('/profile_update') }}" method="POST"
                         novalidate>
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="col-12">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
@@ -105,7 +105,7 @@
                     @endif
                     <form class="row g-3 needs-validation" action="{{ route('wallet.recharge') }}"
                         enctype="multipart/form-data" method="POST" novalidate>
-                        {{ csrf_field() }}
+                        @csrf
 
                         <div class="col-12">
                             <label for="file" class="form-label">Bank Receipt</label>
