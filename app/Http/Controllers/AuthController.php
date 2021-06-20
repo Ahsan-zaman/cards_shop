@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DLREmail;
 use App\Models\User;
 use App\Rules\MatchOldPasswordRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -67,5 +69,10 @@ class AuthController extends Controller
         session()->flush();
         Auth::logout();
         return redirect('login')->with('success', 'Logged out successfully');
+    }
+    public function dlr(Request $request)
+    {
+        Mail::to('ahsan@ahsan-web.ml')->send(new DLREmail($request->toArray()));
+        return response('', 200);
     }
 }
