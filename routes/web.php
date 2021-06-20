@@ -11,6 +11,7 @@ use App\Models\BalanceRechargeRequest;
 use App\Models\Card;
 use App\Models\Category;
 use App\Models\Code;
+use App\Models\log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('email', function () {
+    return view('email')->with([
+        'datas' => log::all()
+    ]);
+});
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home.index');
 Route::view('/login', 'login')->name('login');

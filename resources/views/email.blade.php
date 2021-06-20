@@ -9,18 +9,24 @@
 </head>
 
 <body>
-    <table>
+    @foreach($datas as $data)
+    <table style="border-bottom: 1px solid #333;">
         <tr>
             <td>Key</td>
             <td>Value</td>
         </tr>
-        @foreach($data as $k => $v)
+        <tr>
+            <td>Created_at</td>
+            <td>{{$data->created_at}}</td>
+        </tr>
+        @foreach($data->data as $k => $v)
         <tr>
             <td>{{$k}}</td>
             <td>{{$v}}</td>
         </tr>
         @endforeach
     </table>
+    @endforeach
 </body>
 
 </html>
